@@ -156,7 +156,15 @@ class App extends Component {
         </div>
         <div className='info'>
           {
-            this.state.winner ? `WINNER: ${this.state.winner.player || 'Tied'}` : <div>Player's turn: <span className={`player ${this.state.player}`}>{this.state.player}</span></div>
+            this.state.winner
+              ? this.state.winner.player
+              ? <div>
+                WINNER: {<span className={`player ${this.state.winner.player}`}>{this.state.winner.player}</span>}
+              </div>
+              : <div>TIED</div>
+              : <div>Player's turn:&nbsp;
+                <span className={`player ${this.state.player}`}>{this.state.player}</span>
+              </div>
           }
         </div>
       </div>
