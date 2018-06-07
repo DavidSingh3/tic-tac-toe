@@ -9,20 +9,19 @@
   margin: 30px;
   display: flex;
   justify-content: space-around;
-  width: 600px;
+  width: 300px;
 }
 
 .grid {
   border: #333 solid 1px;
   background-color: #daaa00;
   box-shadow: 0 0 70px 0 rgba(0,0,0,0.75);
-  width: 600px;
+  width: 300px;
   display: flex;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer;
 }
 
 .grid.finished {
@@ -36,7 +35,7 @@
 }
 
 .cell {
-  height: 200px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,4 +48,27 @@
 
 .cell:hover {
   background-color: #ffce11;
+  cursor: pointer;
+}
+
+.cell.notEmpty:hover {
+  background-color: #daaa00;
+  cursor: unset;
+}
+
+.player {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.info .player {
+  letter-spacing: 10px;
+}
+
+.player.X {
+  color: #3e7cbe;
+}
+
+.player.O {
+  color: #be4335;
 }

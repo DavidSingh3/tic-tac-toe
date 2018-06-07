@@ -27,8 +27,8 @@ class App extends Component {
       return
     board[y][x] = this.state.player
     const winner = this.checkWinner(board)
-    const winsO = winner && winner.player !== 'X' ? this.state.winsO +1 : this.state.winsO
-    const winsX = winner && winner.player !== 'O' ? this.state.winsX +1 : this.state.winsX
+    const winsO = winner && winner.player !== 'X' ? this.state.winsO + 1 : this.state.winsO
+    const winsX = winner && winner.player !== 'O' ? this.state.winsX + 1 : this.state.winsX
     const player = this.state.player === 'X' ? 'O' : 'X'
     this.setState({board, player, winner, winsX, winsO})
   }
@@ -42,7 +42,7 @@ class App extends Component {
 
     return ['O', 'X'].reduce((winner, player) => {
       const winningRow = (
-        ()=> {
+        () => {
           let row = null
           return (r) => {
             row = r || row
@@ -129,16 +129,18 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <div className='info'>TIC-TAC-TOE</div>
+        <div className='info player'>TIC-TAC-TOE</div>
         <div className={`grid${this.state.winner ? ' finished' : ''}`}>
           {
             this.state.board.map((row, y) => {
               return <div className='row' key={y}>
                 {
                   row.map((cell, x) => {
-                    return <div className={`cell${(this.state.winner && this.isWinningCell(y, x)) ? ' winningCell' : ''}`} onClick={() => this.handleClick(y, x)} key={`${y}-${x}`}>
+                    return <div
+                      className={`cell${(this.state.winner && this.isWinningCell(y, x)) ? ' winningCell' : ''}${cell ? ' notEmpty' : ''}`}
+                      onClick={() => this.handleClick(y, x)} key={`${y}-${x}`}>
                       {
-                        cell && cell
+                        cell && <p className={`player ${cell}`}>{cell}</p>
                       }
                     </div>
                   })
@@ -148,13 +150,13 @@ class App extends Component {
           }
         </div>
         <div className='info'>
-          <div>X: {this.state.winsX}</div>
+          <div><span className="player X">X</span> {this.state.winsX}</div>
           <button onClick={this.reset}>Reset game</button>
-          <div>O: {this.state.winsO}</div>
+          <div><span className="player O">O</span> {this.state.winsO}</div>
         </div>
         <div className='info'>
           {
-            this.state.winner ? `WINNER: ${this.state.winner.player || 'Tied'}` : `Player's turn: ${this.state.player}`
+            this.state.winner ? `WINNER: ${this.state.winner.player || 'Tied'}` : <div>Player's turn: <span className={`player ${this.state.player}`}>{this.state.player}</span></div>
           }
         </div>
       </div>
