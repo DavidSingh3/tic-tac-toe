@@ -107,17 +107,18 @@ class App extends Component {
   isWinningCell = (y, x) => {
     const {winningRow} = this.state.winner
     return (
-      this.state.winner !== 'tied' &&
-      (winningRow === 'A' && y === 0) ||
-      (winningRow === 'B' && y === 1) ||
-      (winningRow === 'C' && y === 2) ||
-      (winningRow === 'D' && x === 0) ||
-      (winningRow === 'E' && x === 1) ||
-      (winningRow === 'F' && x === 2) ||
-      (winningRow === 'G' && x === y) ||
-      (winningRow === 'H' && y === 0 && x === 2) ||
-      (winningRow === 'H' && y === 1 && x === 1) ||
-      (winningRow === 'H' && y === 2 && x === 0)
+      this.state.winner !== 'tied' && (
+        (winningRow === 'A' && y === 0) ||
+        (winningRow === 'B' && y === 1) ||
+        (winningRow === 'C' && y === 2) ||
+        (winningRow === 'D' && x === 0) ||
+        (winningRow === 'E' && x === 1) ||
+        (winningRow === 'F' && x === 2) ||
+        (winningRow === 'G' && x === y) ||
+        (winningRow === 'H' && y === 0 && x === 2) ||
+        (winningRow === 'H' && y === 1 && x === 1) ||
+        (winningRow === 'H' && y === 2 && x === 0)
+      )
     ) || false
   }
 
